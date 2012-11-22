@@ -1,0 +1,119 @@
+log-to-console: True
+
+game:
+  resolution: [900,600]
+  caption:    "Mah .... GAMME!"
+  fps-limit:  60
+
+
+mainmenu:
+  bgcolor:          [40,10,0]
+  title:            "Welcum to mah .... GAMME!"
+  title-size:       [600,100]
+  title-center-y:   100
+  title-color:      [50,200,30]
+  title-bgcolor:    [230,30,0,30]
+  title-text-size:  30
+  start-button-size:         [450,80]
+  start-button-text:         "Start ..... GAMME!"
+  start-button-center-y:     240
+  highscore-button-size:     [450,80]
+  highscore-button-text:     "Highscores"
+  highscore-button-center-y: 350
+  exit-button-size:          [450,80]
+  exit-button-text:          Exit Game
+  exit-button-center-y:      460
+
+gameboard-logic:
+  starting-position: [1,1]
+  block-percentage:   45
+
+pygame-field:
+  error-length: 10
+
+board:
+  base:    images/base.png    # This image is put on top of every image
+  open:    images/open.png
+  knight:  images/knight.png
+  visited: images/visited.png
+  block:   images/block.png
+  error:   images/error.png
+
+
+clickToContinue:
+  alpha:      200
+  bgcolor:    [0,0,0]
+  font:       "dejavuserif"
+  font-size:  50
+  bold:       true
+  text-color: [190,80,90]
+
+freemode:
+  bgcolor: [210,210,210]
+
+scoremode:
+  pause-color: [0,0,0]
+  pause-alpha: 200
+  pause-text:  "Click to un-pause"
+  base-score:  78
+
+scorebox:
+  height:     85
+  location:   [0,195]
+  text-color: [40,140,34]
+  bgcolor:    [230,140,200,30]
+  text-size:  25
+
+timebox:
+  height:     85
+  location:   [0,110]
+  text-color: [240,110,44]
+  bgcolor:    [100,30,60,100]
+  text-size:  30
+
+levelbox:
+  height:     110
+  location:   [0,0]
+  text-color: [53,152,24]
+  bgcolor:    [73,53,3,152]
+  text-size:  30
+
+sidebar:
+  bgcolor:       [20,20,20]
+  button-margin: 15
+  button-height: 60
+  pause-text:    "Pause"
+  restart-text:  "Restart"
+  mainmenu-text: "Main Menu"
+  quit-text:     "Exith Game"
+  board-padding: 20
+
+button:
+  bgcolor:       [10,10,10]
+  clicked_color: [100,30,0]
+  click-length:  10
+  font:          "dejavuserif"
+  font-size:     20
+  bold:          true
+  text-color:    [53,152,24]
+
+textbox:
+  default-font:  "dejavuserif"
+  default-bold:  True
+
+highscore:
+  bgcolor:          [40,0,0]
+  show-n-scores:    10
+  title-text:       "Highscores"
+  title-size:       [700,70]
+  title-text-color: [20,40,140]
+  title-bgcolor:    [40,0,0]
+  title-text-size:  35
+  title-bold:       True
+  score-size:       [700,40]
+  score-text-color: [120,40,70]
+  score-bgcolor:    [40,0,0]
+  score-text-size:  27
+  score-bold:       True
+  score-font:       "monospace"
+  score-separator:  " : "
