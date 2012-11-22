@@ -1,7 +1,7 @@
 Knights
 =======
 
-A puzzle game where you must fill a board using only knight movements
+A puzzle game where you must fill a board using only knight movements. It's pretty much a clone of the game troyis.
 
 It is a GPL licensed program.
 
