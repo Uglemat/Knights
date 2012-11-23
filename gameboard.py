@@ -2,8 +2,8 @@
 import pygame
 from pygame.locals import *
 from gameboard_logic import Gameboard, Field
-from settings import board_settings
-from settings import pygame_field_settings
+from settings import BOARD
+from settings import PYGAME_FIELD
 
 class PygameField(pygame.sprite.Sprite):
     def __init__(self,field_size,logicfield,field_representation):
@@ -16,7 +16,7 @@ class PygameField(pygame.sprite.Sprite):
         self.image = pygame.Surface((field_size,field_size))
 
         self.error = 0
-        self.errorlength = pygame_field_settings['error-length']
+        self.errorlength = PYGAME_FIELD['error-length']
 
         self.update()
         self.rect = self.image.get_rect()
@@ -48,12 +48,12 @@ class Board(Gameboard):
 
         load = lambda name: pygame.image.load(name)
 
-        _open   = load(board_settings['open']).convert()
-        knight  = load(board_settings['knight']).convert()
-        visited = load(board_settings['visited']).convert()
-        block   = load(board_settings['block']).convert()
-        error   = load(board_settings['error']).convert()
-        base    = load(board_settings['base'])
+        _open   = load(BOARD['open']).convert()
+        knight  = load(BOARD['knight']).convert()
+        visited = load(BOARD['visited']).convert()
+        block   = load(BOARD['block']).convert()
+        error   = load(BOARD['error']).convert()
+        base    = load(BOARD['base'])
 
         img_name = [(_open,"open"),
                     (knight,"knight"),

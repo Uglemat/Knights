@@ -15,7 +15,7 @@ def submit_score(score):
         highscores['highscores'].append(score)
         hs.write(yaml.dump(highscores))
 
-def top(n):
+def get_highscores(n):
     if not os.path.exists(highscores_file):
         return []
     with open(highscores_file,"r") as hs:

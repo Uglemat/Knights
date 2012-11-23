@@ -3,7 +3,7 @@ import random
 import sys
 sys.setrecursionlimit(2500) # Will allow generate_board to create much larger maps.
 
-from settings import gameboard_logic_settings
+from settings import GAMEBOARD_LOGIC
 
 def square(x): return x*x
 
@@ -63,7 +63,7 @@ class Field(object):
 class Gameboard(object):
     def __init__(self,size):
         self.size = size
-        self.knight_pos = tuple(gameboard_logic_settings['starting-position'])
+        self.knight_pos = tuple(GAMEBOARD_LOGIC['starting-position'])
         self.populate_board(size)
 
     def populate_board(self,size):
@@ -71,7 +71,7 @@ class Gameboard(object):
         board = concat([[(x,y) for x in range(1,size+1)] for y in range(1,size+1)])
         open_fields = generate_board(size,
                                      self.knight_pos,
-                                     threshold=gameboard_logic_settings['block-percentage'])
+                                     threshold=GAMEBOARD_LOGIC['block-percentage'])
 
         for coords in board:
             field_type = ""
