@@ -24,5 +24,5 @@ def nice_print(args):
         return
     base = time.strftime("%H:%M:%S: ")
     for arg in args:
-        base += '{:<33}'.format(arg)
+        base += '{0:<33}'.format(arg)
     print base
