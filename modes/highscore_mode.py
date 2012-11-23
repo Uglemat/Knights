@@ -58,8 +58,8 @@ class Highscore(object):
                 bold=HIGHSCORE['score-bold'],
                 font=HIGHSCORE['score-font'])
             highscore.update(
-                '{:<2}'.format(str(placement))+HIGHSCORE['score-separator']+
-                '{:>15}'.format(str(i))
+                '{0:<2}'.format(str(placement))+HIGHSCORE['score-separator']+
+                '{0:>15}'.format(str(i))
                 )
 
             self.background.blit(highscore.surface,

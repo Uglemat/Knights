@@ -46,7 +46,7 @@ class Freemode(object):
             field.error_update()
             if field.changed:
                 self.changed = True
-                nice_print(["Field {} changed".format(field.logicfield.get_coords()),
+                nice_print(["Field {0} changed".format(field.logicfield.get_coords()),
                             "Blitting on background."])
 
                 field.update()

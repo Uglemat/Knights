@@ -79,7 +79,7 @@ class Game(object):
 
     def blit(self):
         if self.mode.changed:
-            nice_print(["Mode {!r} changed:".format(self.mode.name),
+            nice_print(["Mode {0!r} changed:".format(self.mode.name),
                         "Blitting on screen\n"])
             self.screen.blit(self.mode.background,(0,0))
 

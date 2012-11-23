@@ -95,7 +95,7 @@ class Sidebar(object):
             if button.click_animate() == "done":
                 self.buttonevents.append(button)
             if button.changed:
-                nice_print(["Button {!r} changed:".format(button.name),
+                nice_print(["Button {0!r} changed:".format(button.name),
                             "Blitting on sidebar"])
 
                 self.surface.blit(button.surface,button.rect)
@@ -104,7 +104,7 @@ class Sidebar(object):
 
         if self.score_box.changed:
             self.changed = True
-            nice_print(["Textbox {!r} changed:".format(self.score_box.name),
+            nice_print(["Textbox {0!r} changed:".format(self.score_box.name),
                         "Blitting on sidebar"])
             self.reset()
             self.surface.blit(self.level_box.surface,self.level_box.rect)
@@ -113,7 +113,7 @@ class Sidebar(object):
 
         if self.time_box.changed:
             self.changed = True
-            nice_print(["Textbox {!r} changed:".format(self.time_box.name),
+            nice_print(["Textbox {0!r} changed:".format(self.time_box.name),
                         "Blitting on sidebar"])
             self.reset()
             self.surface.blit(self.level_box.surface,self.level_box.rect)
@@ -133,7 +133,7 @@ class Sidebar(object):
         for button in self.buttons:
             br = button.rect.move((boardsize+SIDEBAR['board-padding'],0))
             if br.collidepoint(pos):
-                nice_print(["Clicked button {!r}".format(button.text)])
+                nice_print(["Clicked button {0!r}".format(button.text)])
                 button.is_clicking = button.clickamount
 
     def button_clicked(self):
