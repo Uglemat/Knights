@@ -103,7 +103,7 @@ class Mainmenu(object):
             if button.click_animate() == "done":
                 self.buttonevents.append(button)
             if button.changed:
-                nice_print(["Button {!r} changed:".format(button.name),
+                nice_print(["Button {0!r} changed:".format(button.name),
                             "Blitting on main menu"])
                 self.background.blit(button.surface,button.rect)
                 self.changed = True
@@ -113,7 +113,7 @@ class Mainmenu(object):
     def mousedown(self,pos):
         for button in self.buttons:
             if button.rect.collidepoint(pos):
-                nice_print(["Clicked button {!r}".format(button.name)])
+                nice_print(["Clicked button {0!r}".format(button.name)])
                 button.is_clicking = button.clickamount
 
     def button_clicked(self):
