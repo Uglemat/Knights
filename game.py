@@ -20,10 +20,10 @@ import pygame
 from settings import GAME
 from common import nice_print
 
-from mainmenu_mode import Mainmenu
-from score_mode import Scoremode
-from clicktocontinue_mode import ClickToContinue
-from highscore_mode import Highscore
+from modes.mainmenu_mode import Mainmenu
+from modes.score_mode import Scoremode
+from modes.clicktocontinue_mode import ClickToContinue
+from modes.highscore_mode import Highscore
 
 class Game(object):
     def __init__(self):
