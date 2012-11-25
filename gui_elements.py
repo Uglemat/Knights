@@ -27,15 +27,17 @@ from common import nice_print
 import pygame
 
 class Sidebar(object):
-    def __init__(self,score,sidebar_size):
+    def __init__(self,score,sidebar_size,boardsize):
         self.width, self.height = sidebar_size
         self.surface = pygame.Surface(sidebar_size)
         self.bgcolor = SIDEBAR['bgcolor']
+        self.left_padding = boardsize + SIDEBAR['board-padding'] 
 
         self.surface.fill(self.bgcolor)
         self.score = score
 
         self.changed = True
+
 
         btn_margin = SIDEBAR['button-margin']
         btn_width  = self.width - (btn_margin*2)
@@ -92,6 +94,7 @@ class Sidebar(object):
     def update(self):
         self.changed = False
         for button in self.buttons:
+            button.update_hover_status(pygame.mouse.get_pos(),self.left_padding)
             if button.click_animate() == "done":
                 self.buttonevents.append(button)
             if button.changed:
@@ -129,9 +132,9 @@ class Sidebar(object):
         self.score_box.blit_text()
         self.changed = True
 
-    def mousedown(self,pos,boardsize):
+    def mousedown(self,pos):
         for button in self.buttons:
-            br = button.rect.move((boardsize+SIDEBAR['board-padding'],0))
+            br = button.rect.move((self.left_padding,0))
             if br.collidepoint(pos):
                 nice_print(["Clicked button {0!r}".format(button.text)])
                 button.is_clicking = button.clickamount
@@ -153,6 +156,7 @@ class Button(object):
         self.text = text
         self.color = BUTTON['bgcolor']
         self.clicking_color = BUTTON['clicked_color']
+        self.is_hovering = False
 
         self.clickamount = BUTTON['click-length']
         self.is_clicking = 0
@@ -173,6 +177,18 @@ class Button(object):
         renderpos = font.get_rect(centerx=self.width/2,centery=self.height/2)
         self.surface.blit(font,renderpos)
 
+    def update_hover_status(self,pos,left_padding=0):
+        br = self.rect.move((left_padding,0))
+        if br.collidepoint(pos):
+            if not self.is_hovering:
+                self.changed = True
+                self.is_hovering = True
+                self.render_button()
+        elif self.is_hovering:
+            self.is_hovering = False
+            self.changed = True
+            self.render_button()
+
     def click_animate(self):
         if self.is_clicking:
             self.is_clicking -= 1
@@ -185,6 +201,9 @@ class Button(object):
     def render_button(self):
         if self.is_clicking:
             self.surface.fill(self.clicking_color)
+            self.blit_text()
+        elif self.is_hovering:
+            self.surface.fill((111,45,3))
             self.blit_text()
         else:
             self.surface.fill(self.color)

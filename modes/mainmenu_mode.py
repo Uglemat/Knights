@@ -100,6 +100,7 @@ class Mainmenu(object):
     def update(self):
         self.changed = False
         for button in self.buttons:
+            button.update_hover_status(pygame.mouse.get_pos())
             if button.click_animate() == "done":
                 self.buttonevents.append(button)
             if button.changed:

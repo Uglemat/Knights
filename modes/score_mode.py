@@ -37,8 +37,9 @@ class Scoremode(Freemode):
         self.level = level
 
 
-        sidebar_size = (screensize[0]-self.boardsize-SIDEBAR['board-padding'],screensize[1])
-        self.sidebar = Sidebar(self.score,sidebar_size)
+        sidebar_size = (screensize[0]-self.boardsize-SIDEBAR['board-padding'],
+                        screensize[1])
+        self.sidebar = Sidebar(self.score,sidebar_size,self.boardsize)
         self.sidebar_rect = self.sidebar.surface.get_rect()
         self.sidebar_rect = self.sidebar_rect.move((self.boardsize+SIDEBAR['board-padding'],0))
 
@@ -116,7 +117,7 @@ class Scoremode(Freemode):
                 self.score += self.base_score * self.level
                 nice_print(["Score increased to:",str(self.score)])
 
-        self.sidebar.mousedown(pos,self.boardsize)
+        self.sidebar.mousedown(pos)
 
     def reset(self):
             self.pause = False
