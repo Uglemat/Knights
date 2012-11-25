@@ -32,7 +32,7 @@ class Scoremode(Freemode):
         self.score = score
         self.base_score = SCOREMODE['base-score']
         self.clock = pygame.time.Clock()
-        self.timeleft = (51-(5*(level/3)))*1000
+        self.timeleft = (51)*1000
 
         self.level = level
 
