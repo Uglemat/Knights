@@ -36,6 +36,7 @@ class PygameField(pygame.sprite.Sprite):
 
         self.update()
         self.rect = self.image.get_rect()
+        self.clickrect = self.image.get_rect()
 
     def error_update(self):
         if self.error > 0:
@@ -88,6 +89,7 @@ class Board(Gameboard):
             coords = ((field.x-1)*box_size+field_offset,(field.y-1)*box_size+field_offset)
             tmpf = PygameField(int(box_size-field_offset),field,field_representation)
             tmpf.rect = tmpf.rect.move(coords[0],coords[1])
+            tmpf.clickrect = tmpf.rect.inflate((field_offset+1,field_offset+1))
             self.pygame_fields.append(tmpf)
 
     def update_fields(self):
@@ -102,7 +104,7 @@ class Board(Gameboard):
 
     def fieldclick(self,coords):
         for field in self.pygame_fields:
-            if field.rect.collidepoint(coords):
+            if field.clickrect.collidepoint(coords):
                 old_field = self.get_current_field()
                 newfield_type = self.move_knight(field.logicfield.get_coords())
                 if not newfield_type: # If unvalid move

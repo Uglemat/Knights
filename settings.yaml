@@ -15,6 +15,7 @@
 
 log-to-console: True
 
+
 game:
   resolution: [980,640]
   caption:    "Mah .... GAMME!"

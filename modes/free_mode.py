@@ -31,7 +31,7 @@ class Freemode(object):
         self.background=pygame.Surface(screensize).convert()
         self.background.fill(self.background_color)
 
-        self.board = Board(self.boardsize,level+2,5)
+        self.board = Board(self.boardsize,level+2,4)
         self.board_rect = pygame.Rect((0,0),(self.boardsize,self.boardsize))
 
         self.changed = True
