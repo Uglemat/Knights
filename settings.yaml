@@ -16,7 +16,7 @@
 log-to-console: True
 
 game:
-  resolution: [900,600]
+  resolution: [980,640]
   caption:    "Mah .... GAMME!"
   fps-limit:  60
 
@@ -64,7 +64,7 @@ clickToContinue:
   text-color: [190,80,90]
 
 freemode:
-  bgcolor: [210,210,210]
+  bgcolor: [150,150,150]#[210,210,210]
 
 scoremode:
   pause-color: [0,0,0]
@@ -101,7 +101,7 @@ sidebar:
   restart-text:  "Restart"
   mainmenu-text: "Main Menu"
   quit-text:     "Exith Game"
-  board-padding: 20
+  board-padding: 5
 
 button:
   bgcolor:       [10,10,10]

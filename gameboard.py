@@ -60,7 +60,7 @@ class Board(Gameboard):
         self.wh = width_height
         box_size = (float(self.wh) / self.size)
 
-        field_size = int(box_size-field_offset)+0
+        field_size = int(box_size-field_offset)-1
 
         load = lambda name: pygame.image.load(name)
 
