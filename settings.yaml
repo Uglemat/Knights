@@ -13,8 +13,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-log-to-console: True
+# Colors are specified in RGB, in a list. If there are 4 elements, then the
+# 4th is the alpha channel
 
+log-to-console: True
 
 game:
   resolution: [980,640]

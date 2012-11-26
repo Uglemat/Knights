@@ -16,7 +16,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
 import pygame
-from pygame.locals import *
 from gameboard_logic import Gameboard, Field
 from settings import BOARD
 from settings import PYGAME_FIELD

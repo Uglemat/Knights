@@ -14,16 +14,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
-
-import pygame
-
-from settings import GAME
-from common import nice_print
-
 from modes.mainmenu_mode import Mainmenu
 from modes.score_mode import Scoremode
 from modes.clicktocontinue_mode import ClickToContinue
 from modes.highscore_mode import Highscore
+
+from settings import GAME
+from common import nice_print
+import pygame
 
 class Game(object):
     def __init__(self):
