@@ -112,6 +112,7 @@ button:
   font-size:     20
   bold:          true
   text-color:    [53,152,24]
+  hover-color:   [40,2,24]
 
 textbox:
   default-font:  "dejavuserif"

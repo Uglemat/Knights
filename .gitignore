@@ -1,0 +1,3 @@
+.highscores.yaml
+*.pyc
+.backups/

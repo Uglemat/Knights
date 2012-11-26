@@ -156,7 +156,9 @@ class Button(object):
         self.text = text
         self.color = BUTTON['bgcolor']
         self.clicking_color = BUTTON['clicked_color']
+        self.hover_color = BUTTON['hover-color']
         self.is_hovering = False
+
 
         self.clickamount = BUTTON['click-length']
         self.is_clicking = 0
@@ -203,7 +205,7 @@ class Button(object):
             self.surface.fill(self.clicking_color)
             self.blit_text()
         elif self.is_hovering:
-            self.surface.fill((111,45,3))
+            self.surface.fill(self.hover_color)
             self.blit_text()
         else:
             self.surface.fill(self.color)
