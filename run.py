@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from game import Game
+from game.game import Game
 
 version = 1.0
 

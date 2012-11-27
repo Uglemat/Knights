@@ -17,12 +17,12 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 from free_mode import Freemode
-from settings import SCOREMODE
-from settings import SIDEBAR
+from game.settings import SCOREMODE
+from game.settings import SIDEBAR
 
-from gui_elements import Sidebar
-from scores import submit_score
-from common import nice_print
+from game.gui_elements import Sidebar
+from game.scores import submit_score
+from game.common import nice_print
 import pygame
 
 class Scoremode(Freemode):
