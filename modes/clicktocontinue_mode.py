@@ -51,6 +51,9 @@ class ClickToContinue(object):
         if self.clock.tick() > self.wait_time:
             self.hasclicked = True
 
+    def mouseup(self,pos):
+        pass
+
     def done(self):
         if self.hasclicked:
             return self.donetuple

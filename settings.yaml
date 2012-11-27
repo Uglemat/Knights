@@ -116,7 +116,6 @@ button:
   bgcolor:       [200,160,80]
   hover-color:   [239,178,91]
   clicked_color: [71 ,154,60]
-  click-length:  10
   font:          "dejavuserif"
   font-size:     20
   bold:          true

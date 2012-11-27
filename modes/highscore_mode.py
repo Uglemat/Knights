@@ -80,6 +80,9 @@ class Highscore(object):
     def mousedown(self,pos):
         self.hasclicked = True
 
+    def mouseup(self,pos):
+        pass
+
     def done(self):
         if self.hasclicked:
             return ("mainmenu",'')

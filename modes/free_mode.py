@@ -54,6 +54,9 @@ class Freemode(object):
     def mousedown(self,pos):
         self.board.fieldclick(pos)
 
+    def mouseup(self,pos):
+        pass
+
     def done(self):
         if self.board.game_over():
             donetuple = ("freemode",self.level+1)

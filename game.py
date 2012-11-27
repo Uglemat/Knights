@@ -91,6 +91,8 @@ class Game(object):
                 exit()
             if i.type==pygame.MOUSEBUTTONDOWN:
                 self.mode.mousedown(i.pos)
+            if i.type==pygame.MOUSEBUTTONUP:
+                self.mode.mouseup(i.pos)
 
     def modeswitch(self,done): # done is tuple with necessary information
         if done:

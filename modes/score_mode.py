@@ -120,6 +120,9 @@ class Scoremode(Freemode):
 
         self.sidebar.mousedown(pos)
 
+    def mouseup(self,pos):
+        self.sidebar.mouseup(pos)
+
     def reset(self):
             self.pause = False
             self.background.fill(self.background_color)

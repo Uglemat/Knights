@@ -92,8 +92,8 @@ class Sidebar(object):
     def update(self):
         self.changed = False
         for button in self.buttons:
-            button.update_hover_status(pygame.mouse.get_pos(),self.left_padding)
-            if button.click_animate() == "done":
+            button.update(pygame.mouse.get_pos(),self.left_padding)
+            if button.clicked():
                 self.buttonevents.append(button)
             if button.changed:
                 nice_print(["Button {0!r} changed:".format(button.name),
@@ -135,7 +135,13 @@ class Sidebar(object):
             br = button.rect.move((self.left_padding,0))
             if br.collidepoint(pos):
                 nice_print(["Clicked button {0!r}".format(button.text)])
-                button.is_clicking = button.clickamount
+                button.mousedown()
+
+    def mouseup(self,pos):
+        for button in self.buttons:
+            br = button.rect.move((self.left_padding,0))
+            if br.collidepoint(pos):
+                button.mouseup()
 
     def button_clicked(self):
         try:
@@ -156,10 +162,9 @@ class Button(object):
         self.clicking_color = BUTTON['clicked_color']
         self.hover_color = BUTTON['hover-color']
         self.is_hovering = False
-
-
-        self.clickamount = BUTTON['click-length']
-        self.is_clicking = 0
+        self.is_clicking = False
+        self.was_clicking= False
+        self.semi_officially_clicked = False
 
         self.surface = pygame.Surface(self.size)
         self.surface.fill(self.color)
@@ -184,19 +189,33 @@ class Button(object):
                 self.changed = True
                 self.is_hovering = True
                 self.render_button()
-        elif self.is_hovering:
+        elif self.is_hovering or self.is_clicking:
+            self.is_clicking = False
             self.is_hovering = False
             self.changed = True
             self.render_button()
 
     def click_animate(self):
         if self.is_clicking:
-            self.is_clicking -= 1
-            if self.is_clicking+1 == self.clickamount or self.is_clicking == 0:
+            if not self.was_clicking:
                 self.changed = True
                 self.render_button()
-            if self.is_clicking == 0:
-                return "done"
+            self.was_clicking = True
+        else:
+            self.was_clicking = False
+
+    def update(self,pos,left_padding=0):
+        self.update_hover_status(pos,left_padding)
+        self.click_animate()
+
+    def clicked(self):
+        if self.semi_officially_clicked:
+            self.semi_officially_clicked = False
+            if self.is_clicking:
+                self.changed = True
+                self.is_clicking = False
+                self.render_button()
+                return True
 
     def render_button(self):
         if self.is_clicking:
@@ -208,6 +227,12 @@ class Button(object):
         else:
             self.surface.fill(self.color)
             self.blit_text()
+
+    def mouseup(self):
+        self.semi_officially_clicked = True
+
+    def mousedown(self):
+        self.is_clicking = True
 
 class Textbox(object):
     def __init__(self,name,size,location,text_color,

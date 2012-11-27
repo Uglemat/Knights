@@ -99,8 +99,8 @@ class Mainmenu(object):
     def update(self):
         self.changed = False
         for button in self.buttons:
-            button.update_hover_status(pygame.mouse.get_pos())
-            if button.click_animate() == "done":
+            button.update(pygame.mouse.get_pos())
+            if button.clicked():
                 self.buttonevents.append(button)
             if button.changed:
                 nice_print(["Button {0!r} changed:".format(button.name),
@@ -114,7 +114,14 @@ class Mainmenu(object):
         for button in self.buttons:
             if button.rect.collidepoint(pos):
                 nice_print(["Clicked button {0!r}".format(button.name)])
-                button.is_clicking = button.clickamount
+                button.mousedown()
+                return
+
+    def mouseup(self,pos):
+        for button in self.buttons:
+            if button.rect.collidepoint(pos):
+                button.mouseup()
+                return
 
     def button_clicked(self):
         try:
