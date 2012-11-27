@@ -16,30 +16,35 @@
 # Colors are specified in RGB, in a list. If there are 4 elements, then the
 # 4th is the alpha channel
 
+---
+
+yellow: &title-color
+  [220,212,0]
+
 log-to-console: True
 
 game:
   resolution: [980,640]
-  caption:    "Mah .... GAMME!"
+  caption:    "Knights"
   fps-limit:  60
 
 
 mainmenu:
-  bgcolor:          [40,10,0]
-  title:            "Welcum to mah .... GAMME!"
+  bgcolor:          [20,20,20]
+  title:            "Main Menu"
   title-size:       [600,100]
   title-center-y:   100
-  title-color:      [50,200,30]
-  title-bgcolor:    [230,30,0,30]
+  title-color:      *title-color
+  title-bgcolor:    [20,20,20,0]
   title-text-size:  30
   start-button-size:         [450,80]
-  start-button-text:         "Start ..... GAMME!"
+  start-button-text:         "Start Game"
   start-button-center-y:     240
   highscore-button-size:     [450,80]
   highscore-button-text:     "Highscores"
   highscore-button-center-y: 350
   exit-button-size:          [450,80]
-  exit-button-text:          Exit Game
+  exit-button-text:          "Exit Game"
   exit-button-center-y:      460
 
 gameboard-logic:
@@ -64,16 +69,17 @@ clickToContinue:
   font:       "dejavuserif"
   font-size:  50
   bold:       true
-  text-color: [190,80,90]
+  text-color: *title-color
 
 freemode:
-  bgcolor: [150,150,150]#[210,210,210]
+  bgcolor: [150,150,150]
 
 scoremode:
-  pause-color: [0,0,0]
-  pause-alpha: 200
-  pause-text:  "Click to un-pause"
-  base-score:  78
+  pause-color:      [0,0,0]
+  pause-text-color: *title-color
+  pause-alpha:      200
+  pause-text:       "Click to un-pause"
+  base-score:       78
 
 scorebox:
   height:     85
@@ -107,32 +113,34 @@ sidebar:
   board-padding: 5
 
 button:
-  bgcolor:       [10,10,10]
-  clicked_color: [100,30,0]
+  bgcolor:       [200,160,80]
+  hover-color:   [239,178,91]
+  clicked_color: [71 ,154,60]
   click-length:  10
   font:          "dejavuserif"
   font-size:     20
   bold:          true
-  text-color:    [53,152,24]
-  hover-color:   [40,2,24]
+  text-color:    [0,0,0]
 
 textbox:
   default-font:  "dejavuserif"
   default-bold:  True
 
 highscore:
-  bgcolor:          [40,0,0]
-  show-n-scores:    10
+  bgcolor:          [20,20,20]
+  show-n-scores:    12
   title-text:       "Highscores"
   title-size:       [700,70]
-  title-text-color: [20,40,140]
-  title-bgcolor:    [40,0,0]
+  title-text-color: *title-color
+  title-bgcolor:    [20,20,20]
   title-text-size:  35
   title-bold:       True
   score-size:       [700,40]
-  score-text-color: [120,40,70]
-  score-bgcolor:    [40,0,0]
+  score-text-color: [235,235,235]
+  score-bgcolor:    [20,20,20]
   score-text-size:  27
   score-bold:       True
   score-font:       "monospace"
   score-separator:  " : "
+
+...

@@ -44,9 +44,10 @@ class Scoremode(Freemode):
         self.sidebar_rect = self.sidebar_rect.move((self.boardsize+SIDEBAR['board-padding'],0))
 
         self.pause = False
-        self.pause_color = SCOREMODE['pause-color']
-        self.pause_alpha = SCOREMODE['pause-alpha']
-        self.pause_text =  SCOREMODE['pause-text']
+        self.pause_color      = SCOREMODE['pause-color']
+        self.pause_alpha      = SCOREMODE['pause-alpha']
+        self.pause_text       = SCOREMODE['pause-text']
+        self.pause_text_color = SCOREMODE['pause-text-color']
 
     def done(self):
         if self.board.game_over():
@@ -69,10 +70,10 @@ class Scoremode(Freemode):
 
         brx, bry = self.board_rect.size
 
-        font = pygame.font.SysFont("dejavuserif",
-                                   55,
-                                   bold=True)
-        font = font.render(self.pause_text,1,(250,242,0))
+        font = pygame.font.SysFont("dejavuserif",55,bold=True)
+        font = font.render(self.pause_text,
+                           1,
+                           self.pause_text_color)
         renderpos = font.get_rect(centerx=brx/2,centery=bry/2)
 
         pause_background = pygame.Surface((brx,bry))
