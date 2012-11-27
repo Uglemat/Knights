@@ -18,6 +18,9 @@
 
 ---
 
+# The "&.." Stuff simply means that other things can refer to yellow's value
+#  by using "*title-color". If you change the value of yellow, you cange the
+#  value of those other things as well.
 yellow: &title-color
   [220,212,0]
 
