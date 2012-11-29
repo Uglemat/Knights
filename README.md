@@ -5,7 +5,8 @@ A puzzle game where you must fill a board using only knight movements. It's pret
 
 Run the game with the file `run.py`.
 
-I've tested it on Python 2.6 and 2.7.
+Tested on Python 2.6 and 2.7 on Ubuntu.
+Also tested on Windows 7 with Python 2.7, no problems except that the font wasn't available. This doesn't really matter because the game worked fine, but I might include fonts with the game in the future.
 
 It requires pygame and pyyaml. The debian package names for those libraries are python-pygame and python-yaml, respectively.
 
