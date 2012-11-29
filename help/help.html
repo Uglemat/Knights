@@ -1,12 +1,40 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <title>HAY!</title>
+  <title>Help!</title>
+  <style type="text/css">
+    body {
+    line-height: 140%;
+    }
+    h1 {
+    color: darkred;
+    }
+    #rules {
+    width: 700px;
+    margin: 30px;
+    }
+    .beige {
+    background-color: #EAB26E;
+    padding: 2px;
+    }
+    .green {
+    background-color: #64C961;
+    padding: 2px;
+    }
+    .blue {
+    background-color: #3A67BA;
+    padding: 2px;
+    }
+  </style>
 </head>
 <body>
   <h1>Game Rules:</h1>
 
-  <p>The aim of the game is to visit all the <em>baige</em> squares with the Knight. The knight start in the upper left and can only do knight movements, as in chess. When a field has been visited, it becomes <em>green</em>. <em>Blue</em> fields cannot be visited, they are obstacles.</p>
-
-  <p>For every square you visit you get points. You also get bonus points at the end of the level, the faster you finish a level the more bonus points you get.</p>
+  <section id="rules">
+    <p>The aim of the game is to visit all the <em class="beige">beige</em> squares with the Knight. The knight starts in the upper left and can only do knight movements, as in chess. When a field has been visited, it becomes <em class="green">green</em>. <br /><br />
+      <em class="blue">Blue</em> fields cannot be visited, they are obstacles.</p>
+    
+    <p>For every square you visit you get points. You also get bonus points at the end of the level, the faster you finish a level the more bonus points you get.</p>
+  </section>
 </body>
 </html>
