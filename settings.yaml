@@ -21,6 +21,7 @@
 # The "&.." Stuff simply means that other things can refer to yellow's value
 #  by using "*title-color". If you change the value of yellow, you cange the
 #  value of those other things as well.
+
 yellow: &title-color
   [220,212,0]
 
@@ -33,22 +34,26 @@ game:
 
 
 mainmenu:
+  resolution:       [500,530]
   bgcolor:          [20,20,20]
   title:            "Main Menu"
   title-size:       [600,100]
-  title-center-y:   100
+  title-center-y:   50
   title-color:      *title-color
   title-bgcolor:    [20,20,20,0]
-  title-text-size:  30
+  title-text-size:  35
   start-button-size:         [450,80]
   start-button-text:         "Start Game"
-  start-button-center-y:     240
+  start-button-center-y:     130
   highscore-button-size:     [450,80]
   highscore-button-text:     "Highscores"
-  highscore-button-center-y: 350
+  highscore-button-center-y: 240
   exit-button-size:          [450,80]
   exit-button-text:          "Exit Game"
   exit-button-center-y:      460
+  help-button-size:          [450,80]
+  help-button-text:          "Help"
+  help-button-center-y:      350
 
 gameboard-logic:
   starting-position: [1,1]
@@ -112,7 +117,7 @@ sidebar:
   pause-text:    "Pause"
   restart-text:  "Restart"
   mainmenu-text: "Main Menu"
-  quit-text:     "Exith Game"
+  quit-text:     "Exit Game"
   board-padding: 5
 
 button:
@@ -130,17 +135,17 @@ textbox:
 
 highscore:
   bgcolor:          [20,20,20]
-  show-n-scores:    12
+  show-n-scores:    10
   title-text:       "Highscores"
   title-size:       [700,70]
   title-text-color: *title-color
   title-bgcolor:    [20,20,20]
   title-text-size:  35
   title-bold:       True
-  score-size:       [700,40]
+  score-size:       [700,30]
   score-text-color: [235,235,235]
   score-bgcolor:    [20,20,20]
-  score-text-size:  27
+  score-text-size:  25
   score-bold:       True
   score-font:       "monospace"
   score-separator:  " : "

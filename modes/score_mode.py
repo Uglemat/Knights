@@ -32,8 +32,8 @@ class Scoremode(Freemode):
         self.score = score
         self.base_score = SCOREMODE['base-score']
         self.clock = pygame.time.Clock()
-        self.timeleft = (51)*1000
-
+        self.timeleft = (51-0.001)*1000
+        self.show_game_intro = level == 3
         self.level = level
 
 
@@ -49,6 +49,9 @@ class Scoremode(Freemode):
         self.pause_text       = SCOREMODE['pause-text']
         self.pause_text_color = SCOREMODE['pause-text-color']
 
+        if self.level == 1:
+            self.set_pause("Click to start game")
+
     def done(self):
         if self.board.game_over():
             timebonus = ((self.timeleft)*(self.level*self.level)*self.base_score)/20/1000
@@ -56,13 +59,13 @@ class Scoremode(Freemode):
             return ("clicktocontinue",next_round,"Click to continue")
         elif self.timeleft < 100:
             nice_print(["Writing score to file..."])
-            submit_score(self.score)
+            submit_score(int(self.score))
             next_round = ("scoremode",1,0)
             return ("clicktocontinue_scoremode_loss",next_round,"You lost! Click to play again")
         else:
             return False
 
-    def set_pause(self):
+    def set_pause(self,text=False):
         if self.pause:
             self.reset()
             self.sidebar.update()
@@ -71,9 +74,15 @@ class Scoremode(Freemode):
         brx, bry = self.board_rect.size
 
         font = pygame.font.SysFont("dejavuserif",55,bold=True)
-        font = font.render(self.pause_text,
-                           1,
-                           self.pause_text_color)
+        if not text:
+            font = font.render(self.pause_text,
+                               1,
+                               self.pause_text_color)
+        else:
+            font = font.render(text,
+                               1,
+                               self.pause_text_color)
+            
         renderpos = font.get_rect(centerx=brx/2,centery=bry/2)
 
         pause_background = pygame.Surface((brx,bry))
@@ -92,8 +101,8 @@ class Scoremode(Freemode):
             self.changed = False
         self.sidebar.score = self.score
 
-        self.sidebar.score_box.update("Score: "+str(self.sidebar.score))
-        self.sidebar.time_box.update("Time: "+str(self.timeleft/1000))
+        self.sidebar.score_box.update("Score: "+str(int(self.sidebar.score)))
+        self.sidebar.time_box.update("Time: "+str(int(self.timeleft/1000)))
         self.sidebar.level_box.update("Level: "+str(self.level))
 
         if self.sidebar.changed:

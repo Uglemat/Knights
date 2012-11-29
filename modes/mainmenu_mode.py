@@ -59,6 +59,13 @@ class Mainmenu(object):
             size=MAINMENU['exit-button-size'],
             text=MAINMENU['exit-button-text'],
             location=(0,0))
+        
+        self.help_button = Button(
+            name="help",
+            size=MAINMENU['help-button-size'],
+            text=MAINMENU['help-button-text'],
+            location=(0,0))
+
 
         self.scoremode_button.rect = self.scoremode_button.surface.get_rect(
             centery=MAINMENU['start-button-center-y'],
@@ -70,6 +77,10 @@ class Mainmenu(object):
 
         self.exit_button.rect = self.exit_button.surface.get_rect(
             centery=MAINMENU['exit-button-center-y'],
+            centerx=self.width/2)
+
+        self.help_button.rect = self.help_button.surface.get_rect(
+            centery=MAINMENU['help-button-center-y'],
             centerx=self.width/2)
 
         self.background.blit(
@@ -88,10 +99,14 @@ class Mainmenu(object):
         self.background.blit(self.exit_button.surface,
                              self.exit_button.rect)
 
+        self.background.blit(self.help_button.surface,
+                             self.help_button.rect)
+
 
         self.buttons = [self.scoremode_button,
                         self.highscore_button,
-                        self.exit_button]
+                        self.exit_button,
+                        self.help_button]
 
         self.buttonevents = []
 

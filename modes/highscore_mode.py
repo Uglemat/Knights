@@ -62,7 +62,7 @@ class Highscore(object):
 
             self.background.blit(highscore.surface,
                                  highscore.surface.get_rect(
-                    centery=60+45*placement,
+                    centery=75+40*placement,
                     centerx=self.width/2
                     ))
             

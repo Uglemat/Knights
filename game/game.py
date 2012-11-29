@@ -20,13 +20,16 @@ from modes.clicktocontinue_mode import ClickToContinue
 from modes.highscore_mode import Highscore
 
 from settings import GAME
-from common import nice_print
+from settings import MAINMENU
+from common import nice_print, open_help_in_browser
 import pygame
 
 class Game(object):
     def __init__(self):
         pygame.init()
-        self.screen=pygame.display.set_mode(GAME['resolution'])
+
+        self.screen=pygame.display.set_mode(MAINMENU['resolution'])
+
         pygame.display.set_caption(GAME['caption'])
         self.clock = pygame.time.Clock()
         self.timeinterval = GAME['fps-limit']
@@ -61,12 +64,14 @@ class Game(object):
                     self.mode.set_pause()
 
                 elif name == "main_menu":
+                    self.screen=pygame.display.set_mode(MAINMENU['resolution'])
                     self.mode = Mainmenu(self.screen.get_size())
 
         elif self.mode.name == "Mainmenu":
             buttons = self.mode.button_clicked()
             for name in buttons:
                 if name == "scoremode":
+                    self.screen=pygame.display.set_mode(GAME['resolution'])
                     self.mode = Scoremode(1,self.screen.get_size())
                 elif name == "exit":
                     nice_print(["Game.handle_button_clicks:",
@@ -74,6 +79,8 @@ class Game(object):
                     exit()
                 elif name == "highscore":
                     self.mode = Highscore(self.screen.get_size())
+                elif name == "help":
+                    open_help_in_browser()
 
     def blit(self):
         if self.mode.changed:

@@ -15,9 +15,10 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
-
 from settings import settings
 import time
+import webbrowser
+import os
 
 def nice_print(args):
     if not settings['log-to-console']:
@@ -26,3 +27,9 @@ def nice_print(args):
     for arg in args:
         base += '{0:<33}'.format(arg)
     print base
+
+def open_help_in_browser():
+    abs_path = os.path.abspath('.') #Absolute path of current working directory
+    filename = os.path.join(abs_path,"help", 'help.html')
+    nice_print('Trying to open ' + filename)
+    webbrowser.open(filename)
