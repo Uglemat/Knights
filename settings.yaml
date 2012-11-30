@@ -23,7 +23,7 @@
 #  value of those other things as well.
 
 yellow: &title-color
-  [220,212,0]
+  [150,150,150]
 
 log-to-console: True
 
@@ -89,26 +89,26 @@ scoremode:
   pause-text:       "Click to un-pause"
   base-score:       78
 
-scorebox:
-  height:     85
-  location:   [0,195]
-  text-color: [40,140,34]
-  bgcolor:    [230,140,200,30]
-  text-size:  25
-
-timebox:
-  height:     85
-  location:   [0,110]
-  text-color: [240,110,44]
-  bgcolor:    [100,30,60,100]
-  text-size:  30
-
 levelbox:
   height:     110
   location:   [0,0]
-  text-color: [53,152,24]
-  bgcolor:    [73,53,3,152]
-  text-size:  30
+  text-color: [150,150,150]
+  bgcolor:    [150, 150, 150,0]
+  text-size:  33
+
+timebox:
+  height:     110
+  location:   [0,110]
+  text-color: [20,20,20]
+  bgcolor:    [150, 150, 150]
+  text-size:  33
+
+scorebox:
+  height:     110
+  location:   [0,220]
+  text-color: [150,150,150]
+  bgcolor:    [150, 150, 150,0]
+  text-size:  33
 
 sidebar:
   bgcolor:       [20,20,20]
