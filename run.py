@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 from game.game import Game
 
-version = 1.0
+version = "2.0"
 
-print "Launching game.."
+print "Launching game..  v" + version
 
 game = Game()
 game.loop()
