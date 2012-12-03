@@ -16,9 +16,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
 import pygame
-from gameboard_logic import Gameboard, Field
-from settings import BOARD
-from settings import PYGAME_FIELD
+from knights.gameboard_logic import Gameboard, Field
+from knights.settings import BOARD
+from knights.settings import PYGAME_FIELD
 
 class PygameField(pygame.sprite.Sprite):
     def __init__(self,field_size,logicfield,field_representation):

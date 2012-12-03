@@ -1,9 +1,11 @@
 #!/usr/bin/env python
-from game.game import Game
+from __future__ import print_function
+from knights.game import Game
 
-version = "2.0"
 
-print "Launching game..  v" + version
+version = "2.1"
+
+print("Launching game..  v", version)
 
 game = Game()
 game.loop()

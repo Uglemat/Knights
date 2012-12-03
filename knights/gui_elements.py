@@ -15,13 +15,13 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
-from settings import TEXTBOX
-from settings import BUTTON
-from settings import SIDEBAR
-from settings import SCOREBOX
-from settings import TIMEBOX
-from settings import LEVELBOX
-from common import nice_print
+from knights.settings import TEXTBOX
+from knights.settings import BUTTON
+from knights.settings import SIDEBAR
+from knights.settings import SCOREBOX
+from knights.settings import TIMEBOX
+from knights.settings import LEVELBOX
+from knights.common import nice_print
 import pygame
 
 class Sidebar(object):

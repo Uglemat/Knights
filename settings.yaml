@@ -83,6 +83,7 @@ freemode:
   bgcolor: [150,150,150]
 
 scoremode:
+  gametime:         50
   pause-color:      [0,0,0]
   pause-text-color: *title-color
   pause-alpha:      200

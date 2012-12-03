@@ -16,13 +16,13 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
 
-from free_mode import Freemode
-from game.settings import SCOREMODE
-from game.settings import SIDEBAR
+from modes.free_mode import Freemode
+from knights.settings import SCOREMODE
+from knights.settings import SIDEBAR
 
-from game.gui_elements import Sidebar
-from game.scores import submit_score
-from game.common import nice_print
+from knights.gui_elements import Sidebar
+from knights.scores import submit_score
+from knights.common import nice_print
 import pygame
 
 class Scoremode(Freemode):
@@ -32,7 +32,7 @@ class Scoremode(Freemode):
         self.score = score
         self.base_score = SCOREMODE['base-score']
         self.clock = pygame.time.Clock()
-        self.timeleft = (51-0.001)*1000
+        self.timeleft = (SCOREMODE['gametime']+1-0.001)*1000
         self.show_game_intro = level == 3
         self.level = level
 

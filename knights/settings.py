@@ -15,7 +15,12 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
-import yaml
+import sys
+
+if sys.version_info[0] < 3:
+    from yaml.lib import yaml
+else:
+    from yaml.lib3 import yaml
 
 settings_file = open("settings.yaml","r").read()
 settings = yaml.load(settings_file)

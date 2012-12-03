@@ -20,7 +20,7 @@ import random
 import sys
 sys.setrecursionlimit(2500) # Will allow generate_board to create much larger maps.
 
-from settings import GAMEBOARD_LOGIC
+from knights.settings import GAMEBOARD_LOGIC
 
 def square(x): return x*x
 
@@ -38,7 +38,7 @@ def next_step(size,start):
                 (x-1,y+2),(x-1,y-2),
                 (x+1,y+2),(x+1,y-2)]
     possible = filter(lambda f: f[0] in range(1,size+1) and f[1] in range(1,size+1),possible) # Only coords within game border
-    return possible
+    return list(possible)
 
 def generate_board(size,here=(1,1),visited=None,threshold=40):
     """Generate a list of random coordinates that can all be visited by a knight, starting at here"""
@@ -63,10 +63,10 @@ class Field(object):
 
         self.type = field_type
         self.x, self.y = coords
-        self.char_representation = {"visited" :  '--',
-                                    "knight"  :  'KK',
-                                    "block"   : u'██',
-                                    "open"    : u'░░'}
+        self.char_representation = {"visited" : '--',
+                                    "knight"  : 'KK',
+                                    "block"   : '██',
+                                    "open"    : '░░'}
 
     def get_coords(self):
         return self.x, self.y
@@ -134,7 +134,7 @@ class Gameboard(object):
             ifields = sorted(ifields,key=lambda f: f.x)
             for field in ifields:
                 horizontal += field.as_character()
-            print horizontal
+            print(horizontal)
 
     def game_over(self):
         for field in self.board:

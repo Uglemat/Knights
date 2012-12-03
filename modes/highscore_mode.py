@@ -16,9 +16,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
 
-from game.settings import HIGHSCORE
-from game.scores import get_highscores
-from game.gui_elements import Textbox
+from knights.settings import HIGHSCORE
+from knights.scores import get_highscores
+from knights.gui_elements import Textbox
 import pygame
 
 class Highscore(object):

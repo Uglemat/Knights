@@ -14,14 +14,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
+from __future__ import print_function
+
 from modes.mainmenu_mode import Mainmenu
 from modes.score_mode import Scoremode
 from modes.clicktocontinue_mode import ClickToContinue
 from modes.highscore_mode import Highscore
 
-from settings import GAME
-from settings import MAINMENU
-from common import nice_print, open_help_in_browser
+from knights.settings import GAME
+from knights.settings import MAINMENU
+from knights.common import nice_print, open_help_in_browser
 import pygame
 
 class Game(object):
@@ -122,10 +124,6 @@ class Game(object):
                                             wait=700)
             elif newmode == "mainmenu":
                 self.mode = Mainmenu(self.screen.get_size())
-            else:
-                print newmode
-                print "No matching mode"
-
 
 
 if __name__ == "__main__":

@@ -14,9 +14,15 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
-
-import yaml
 import os
+import sys
+
+if sys.version_info[0] < 3:
+    from yaml.lib import yaml
+else:
+    from yaml.lib3 import yaml
+
+
 
 highscores_file = ".highscores.yaml"
 

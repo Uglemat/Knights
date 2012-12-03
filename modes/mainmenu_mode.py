@@ -16,9 +16,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
 
-from game.settings import MAINMENU
-from game.gui_elements import Textbox, Button
-from game.common import nice_print
+from knights.settings import MAINMENU
+from knights.gui_elements import Textbox, Button
+from knights.common import nice_print
 import pygame
 
 class Mainmenu(object):
