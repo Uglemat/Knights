@@ -8,6 +8,8 @@ Run the game with the file `run.py`.
 Tested on Python 2.6, 2.7 and 3.2 on Ubuntu. So the game should be Python 3 compitable.
 Also tested on Windows 7 with Python 2.7, no problems except that the font wasn't available. This doesn't really matter because the game worked fine, but I might include fonts with the game in the future.
 
+The game requires pygame. The debian package name is python-pygame.
+
 The settings.yaml file is full of settings you can tinker with, if you want, you can change the game drastically through that file.
 
 License
