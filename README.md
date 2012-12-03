@@ -20,3 +20,8 @@ PyYAML 3.10 is included with the game in the yaml directory. PyYAML is MIT licen
 The author of PyYAML is Kirill Simonov.
 
 The image named images/knight.png is a derivative work of an icon made by [David Vignoni](http://www.icon-king.com/), and is licensed under the GNU GPL. The original icon can be found [here](http://findicons.com/icon/227177/package_games_strategy?id=376136)
+
+Screenshot
+--
+
+![Screenshot](http://i.imgur.com/wByJ4.png)
