@@ -42,45 +42,48 @@ class Mainmenu(object):
 
         self.main_text.update(MAINMENU['title'])
 
+        button_height = (self.height-MAINMENU['title-size'][1])/4-MAINMENU['button-padding']
+        button_size   = (self.width-(MAINMENU['button-padding']*2),button_height)
+
         self.scoremode_button = Button(
             name="scoremode",
-            size=MAINMENU['start-button-size'],
+            size=button_size,
             text=MAINMENU['start-button-text'],
             location=(0,0))
 
         self.highscore_button = Button(
             name="highscore",
-            size=MAINMENU['highscore-button-size'],
+            size=button_size,
             text=MAINMENU['highscore-button-text'],
             location=(0,0))
 
         self.exit_button = Button(
             name="exit",
-            size=MAINMENU['exit-button-size'],
+            size=button_size,
             text=MAINMENU['exit-button-text'],
             location=(0,0))
         
         self.help_button = Button(
             name="help",
-            size=MAINMENU['help-button-size'],
+            size=button_size,
             text=MAINMENU['help-button-text'],
             location=(0,0))
 
+        calc_button_top = lambda n: (self.height - 
+                                     (button_height)*n - (MAINMENU['button-padding']*(n-1)) - 
+                                     MAINMENU['button-padding'])
 
         self.scoremode_button.rect = self.scoremode_button.surface.get_rect(
-            centery=MAINMENU['start-button-center-y'],
+            top=calc_button_top(4),
             centerx=self.width/2)
-
         self.highscore_button.rect = self.highscore_button.surface.get_rect(
-            centery=MAINMENU['highscore-button-center-y'],
+            top=calc_button_top(3),
             centerx=self.width/2)
-
-        self.exit_button.rect = self.exit_button.surface.get_rect(
-            centery=MAINMENU['exit-button-center-y'],
-            centerx=self.width/2)
-
         self.help_button.rect = self.help_button.surface.get_rect(
-            centery=MAINMENU['help-button-center-y'],
+            top=calc_button_top(2),
+            centerx=self.width/2)
+        self.exit_button.rect = self.exit_button.surface.get_rect(
+            top=calc_button_top(1),
             centerx=self.width/2)
 
         self.background.blit(

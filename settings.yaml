@@ -34,7 +34,7 @@ game:
 
 
 mainmenu:
-  resolution:       [500,530]
+  resolution:       [500,830]
   bgcolor:          [20,20,20]
   title:            "Main Menu"
   title-size:       [600,100]
@@ -42,18 +42,11 @@ mainmenu:
   title-color:      *title-color
   title-bgcolor:    [20,20,20,0]
   title-text-size:  35
-  start-button-size:         [450,80]
+  button-padding:   25
   start-button-text:         "Start Game"
-  start-button-center-y:     130
-  highscore-button-size:     [450,80]
   highscore-button-text:     "Highscores"
-  highscore-button-center-y: 240
-  exit-button-size:          [450,80]
-  exit-button-text:          "Exit Game"
-  exit-button-center-y:      460
-  help-button-size:          [450,80]
   help-button-text:          "Help"
-  help-button-center-y:      350
+  exit-button-text:          "EXXXIT"
 
 gameboard-logic:
   starting-position: [1,1]
