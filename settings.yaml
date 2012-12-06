@@ -46,7 +46,7 @@ mainmenu:
   start-button-text:         "Start Game"
   highscore-button-text:     "Highscores"
   help-button-text:          "Help"
-  exit-button-text:          "EXXXIT"
+  exit-button-text:          "Exit"
 
 gameboard-logic:
   starting-position: [1,1]
@@ -76,7 +76,7 @@ freemode:
   bgcolor: [150,150,150]
 
 scoremode:
-  gametime:         50
+  gametime:         40
   pause-color:      [0,0,0]
   pause-text-color: *title-color
   pause-alpha:      200
