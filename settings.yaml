@@ -34,7 +34,7 @@ game:
 
 
 mainmenu:
-  resolution:       [500,830]
+  resolution:       [500,530]
   bgcolor:          [20,20,20]
   title:            "Main Menu"
   title-size:       [600,100]
