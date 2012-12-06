@@ -17,9 +17,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 from __future__ import print_function
 
 from modes.mainmenu_mode import Mainmenu
+from modes.selecthighscore_mode import SelectHighscore
 from modes.score_mode import Scoremode
 from modes.clicktocontinue_mode import ClickToContinue
 from modes.highscore_mode import Highscore
+from modes.timesaving_mode import Timemode
 
 from knights.settings import GAME
 from knights.settings import MAINMENU
@@ -69,20 +71,53 @@ class Game(object):
                     self.screen=pygame.display.set_mode(MAINMENU['resolution'])
                     self.mode = Mainmenu(self.screen.get_size())
 
+        if self.mode.name == "Timemode":
+            buttons = self.mode.button_clicked()
+            for name in buttons:
+                if name == "quit":
+                    nice_print(["Game.handle_button_clicks:",
+                                "'quit' clicked: exiting"])
+                    exit()
+                elif name == "restart":
+                    self.mode = Timemode(1,self.screen.get_size())
+
+                elif name == "pause":
+                    self.mode.set_pause()
+
+                elif name == "main_menu":
+                    self.screen=pygame.display.set_mode(MAINMENU['resolution'])
+                    self.mode = Mainmenu(self.screen.get_size())
+
         elif self.mode.name == "Mainmenu":
             buttons = self.mode.button_clicked()
             for name in buttons:
                 if name == "scoremode":
                     self.screen=pygame.display.set_mode(GAME['resolution'])
                     self.mode = Scoremode(1,self.screen.get_size())
+                elif name == "timesavemode":
+                    self.screen=pygame.display.set_mode(GAME['resolution'])
+                    self.mode = Timemode(1,self.screen.get_size())
+                elif name == "highscore":
+                    self.mode = SelectHighscore(self.screen.get_size())
+                elif name == "help":
+                    open_help_in_browser()
                 elif name == "exit":
                     nice_print(["Game.handle_button_clicks:",
                                 "'quit' clicked: exiting"])
                     exit()
-                elif name == "highscore":
-                    self.mode = Highscore(self.screen.get_size())
-                elif name == "help":
-                    open_help_in_browser()
+        elif self.mode.name == "SelectHighscore":
+            buttons = self.mode.button_clicked()
+            for name in buttons:
+                if name == "back_highscore_button":
+                    self.mode = Mainmenu(self.screen.get_size())
+                elif name == "timesave_highscore_button":
+                    self.mode = Highscore(self.screen.get_size(),
+                                          gametype="timesave-game",
+                                          title_prefix="Timesave ")
+                elif name == "normalgame_highscore_button":
+                    self.mode = Highscore(self.screen.get_size(),
+                                          gametype="normal-game",
+                                          title_prefix="Normal ")
 
     def blit(self):
         if self.mode.changed:
@@ -113,6 +148,9 @@ class Game(object):
                 self.mode = Freemode(done[1],self.screen.get_size())
             elif newmode == "scoremode":
                 self.mode = Scoremode(done[1],self.screen.get_size(),done[2])
+            elif newmode == "timesavemode":
+                self.mode = Timemode(done[1],self.screen.get_size(),
+                                     done[2],done[3])
             elif newmode == "clicktocontinue":
                 self.mode = ClickToContinue(done[1],
                                             self.screen.get_size(),

@@ -42,13 +42,19 @@ class Mainmenu(object):
 
         self.main_text.update(MAINMENU['title'])
 
-        button_height = (self.height-MAINMENU['title-size'][1])/4-MAINMENU['button-padding']
+        button_height = (self.height-MAINMENU['title-size'][1])/5-MAINMENU['button-padding']
         button_size   = (self.width-(MAINMENU['button-padding']*2),button_height)
 
         self.scoremode_button = Button(
             name="scoremode",
             size=button_size,
             text=MAINMENU['start-button-text'],
+            location=(0,0))
+
+        self.timesave_button = Button(
+            name="timesavemode",
+            size=button_size,
+            text="Timesave game",
             location=(0,0))
 
         self.highscore_button = Button(
@@ -70,10 +76,14 @@ class Mainmenu(object):
             location=(0,0))
 
         calc_button_top = lambda n: (self.height - 
-                                     (button_height)*n - (MAINMENU['button-padding']*(n-1)) - 
+                                     button_height*n - 
+                                     MAINMENU['button-padding']*(n-1) - 
                                      MAINMENU['button-padding'])
 
         self.scoremode_button.rect = self.scoremode_button.surface.get_rect(
+            top=calc_button_top(5),
+            centerx=self.width/2)
+        self.timesave_button.rect = self.timesave_button.surface.get_rect(
             top=calc_button_top(4),
             centerx=self.width/2)
         self.highscore_button.rect = self.highscore_button.surface.get_rect(
@@ -95,18 +105,18 @@ class Mainmenu(object):
 
         self.background.blit(self.scoremode_button.surface,
                              self.scoremode_button.rect)
-
+        self.background.blit(self.timesave_button.surface,
+                             self.timesave_button.rect)
         self.background.blit(self.highscore_button.surface,
                              self.highscore_button.rect)
-
         self.background.blit(self.exit_button.surface,
                              self.exit_button.rect)
-
         self.background.blit(self.help_button.surface,
                              self.help_button.rect)
 
 
         self.buttons = [self.scoremode_button,
+                        self.timesave_button,
                         self.highscore_button,
                         self.exit_button,
                         self.help_button]
@@ -122,7 +132,7 @@ class Mainmenu(object):
                 self.buttonevents.append(button)
             if button.changed:
                 nice_print(["Button {0!r} changed:".format(button.name),
-                            "Blitting on main menu"])
+                            "Blitting on {0!r}".format(self.name)])
                 self.background.blit(button.surface,button.rect)
                 self.changed = True
                 button.changed = False

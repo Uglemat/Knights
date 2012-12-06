@@ -22,14 +22,14 @@ from knights.gui_elements import Textbox
 import pygame
 
 class Highscore(object):
-    def __init__(self,screensize):
+    def __init__(self,screensize,gametype,title_prefix):
         self.name = "highscore"
         self.hasclicked = False
         self.width = screensize[0]
         self.background = pygame.Surface(screensize).convert()
         self.background.fill(HIGHSCORE['bgcolor'])
         self.changed = True
-        highscores = get_highscores(HIGHSCORE['show-n-scores'])
+        highscores = get_highscores(HIGHSCORE['show-n-scores'],gametype=gametype)
 
         title = Textbox(
             name="highscore_title",
@@ -39,7 +39,7 @@ class Highscore(object):
             surface_color=HIGHSCORE['title-bgcolor'],
             text_size=HIGHSCORE['title-text-size'],
             bold=HIGHSCORE['title-bold'])
-        title.update(HIGHSCORE['title-text'])
+        title.update(title_prefix + HIGHSCORE['title-text'])
 
         score_boxes = []
         placement = 0

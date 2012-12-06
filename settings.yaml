@@ -32,7 +32,6 @@ game:
   caption:    "Knights"
   fps-limit:  60
 
-
 mainmenu:
   resolution:       [500,530]
   bgcolor:          [20,20,20]
@@ -41,12 +40,22 @@ mainmenu:
   title-center-y:   50
   title-color:      *title-color
   title-bgcolor:    [20,20,20,0]
-  title-text-size:  35
-  button-padding:   25
+  title-text-size:  25
+  button-padding:   15
   start-button-text:         "Start Game"
   highscore-button-text:     "Highscores"
   help-button-text:          "Help"
   exit-button-text:          "Exit"
+
+selecthighscore:
+  bgcolor:          [20,20,20]
+  title:            "Select game type"
+  title-size:       [600,100]
+  title-color:      *title-color
+  title-bgcolor:    [20,20,20,0]
+  title-text-size:  25
+  title-center-y:   50
+  button-padding:   15
 
 gameboard-logic:
   starting-position: [1,1]
@@ -82,6 +91,11 @@ scoremode:
   pause-text:       "Click to un-pause"
   base-score:       78
   message-color:    *title-color
+  message-important-color: [255,255,255]
+
+timesavemode:
+  level-time:     15
+  message-color:  *title-color
   message-important-color: [255,255,255]
 
 levelbox:
@@ -135,7 +149,7 @@ highscore:
   title-size:       [700,70]
   title-text-color: *title-color
   title-bgcolor:    [20,20,20]
-  title-text-size:  35
+  title-text-size:  25
   title-bold:       True
   score-size:       [700,30]
   score-text-color: [235,235,235]
