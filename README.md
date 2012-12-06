@@ -1,7 +1,7 @@
 Knights
 =======
 
-A puzzle game where you must fill a board using only knight movements. It's pretty much a clone of the game troyis.
+A puzzle game where you must fill a board using only knight movements. It's pretty much a clone of the game troyis. If you want, you can watch this [gameplay video](https://www.youtube.com/watch?v=v_faK8K-Pzk) which shows how you can download and play.
 
 Run the game with the file `run.py`.
 
