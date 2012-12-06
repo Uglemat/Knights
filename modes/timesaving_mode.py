@@ -31,13 +31,16 @@ class Timemode(Scoremode):
     def done(self):
         if self.board.game_over():
             timebonus = ((self.timeleft)*(self.level*self.level)*self.base_score)/20/1000
-            next_round = ("timesavemode",self.level+1,self.score+timebonus,self.timeleft/1000+TIMESAVEMODE['level-time']+.99)
+
+            next_round_time= self.timeleft/1000+TIMESAVEMODE['level-time']+.99
+            next_round = ("timesavemode",self.level+1,self.score+timebonus,next_round_time)
 
             close_call = {True: "   (good luck..)", False: ""}[self.timeleft < 2000]
             messages = [
                 (25,TIMESAVEMODE['message-color'],"Level score: " + str(int(self.score-self.prev_score))),
                 (25,TIMESAVEMODE['message-color'],"Time saved for next round: " + "{0:.1f}".format(self.timeleft/1000) + " seconds"+close_call),
                 (25,TIMESAVEMODE['message-color'],"Timebonus: " + str(int(timebonus))),
+                (45,TIMESAVEMODE['message-important-color'],"Total time next round: " + "{0:.1f}".format(next_round_time)),
                 (45,TIMESAVEMODE['message-important-color'],"Total score: " + str(int(self.score+timebonus))),
                 (20,TIMESAVEMODE['message-color'],"Click to continue to the next level...")]
 

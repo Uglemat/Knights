@@ -25,6 +25,8 @@ else:
 settings_file = open("settings.yaml","r").read()
 settings = yaml.load(settings_file)
 
+VERSION = "2.5"
+
 GAME            = settings['game']
 FREEMODE        = settings['freemode']
 CLICKTOCONTINUE = settings['clickToContinue']

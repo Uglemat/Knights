@@ -6,7 +6,7 @@
     body {
     line-height: 140%;
     }
-    h1 {
+    h1, h2 {
     color: darkred;
     }
     #rules {
@@ -31,10 +31,15 @@
   <h1>Game Rules:</h1>
 
   <section id="rules">
+    <h2>Normal game</h2>
     <p>The aim of the game is to visit all the <em class="beige">beige</em> squares with the Knight. The knight starts in the upper left and can only do knight movements, as in chess. When a field has been visited, it becomes <em class="green">green</em>. <br /><br />
       <em class="blue">Blue</em> fields cannot be visited, they are obstacles.</p>
     
-    <p>For every square you visit you get points. You also get bonus points at the end of the level, the faster you finish a level the more bonus points you get.</p>
+    <p>For every square you visit you get points. You also get bonus points at the end of the level, the faster you finish a level the more bonus points you get. You lose when time runs out.</p>
+
+    <h2>Timesave game</h2>
+
+    <p>Timesave game is similar to normal game, but you start with very little time. When a level ends, the time you have left is passed on to the next level, so the success of the game depends on how fast you did previous levels. Other than that, it's the same as normal game; when time runs out, you lose.</p>
   </section>
 </body>
 </html>
