@@ -26,23 +26,29 @@ else:
 
 highscores_file = ".highscores.yaml"
 
-def submit_score(score):
+def submit_score(score, gametype="normal-game"):
     if os.path.exists(highscores_file):
         f = open(highscores_file,"r")
         highscores = f.read()
         highscores = yaml.load(highscores)
         f.close()
     else:
-        highscores = {'highscores':[]}
+        highscores = {gametype:[]}
     with open(highscores_file,"w") as hs:
-        highscores['highscores'].append(score)
+        try:
+            highscores[gametype].append(score)
+        except KeyError:
+            highscores[gametype] = [score]
         hs.write(yaml.dump(highscores))
 
-def get_highscores(n):
+def get_highscores(n,gametype="normal-game"):
     if not os.path.exists(highscores_file):
         return []
     with open(highscores_file,"r") as hs:
-        highscores = yaml.load(hs.read())['highscores']
+        try:
+            highscores = yaml.load(hs.read())[gametype]
+        except KeyError:
+            return []
         highscores.sort(reverse=True)
 
         return highscores[0:n]

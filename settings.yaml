@@ -65,23 +65,24 @@ board:
 
 
 clickToContinue:
-  alpha:      200
-  bgcolor:    [0,0,0]
+  alpha:      255
+  bgcolor:    [20,20,20]
   font:       "dejavuserif"
-  font-size:  50
   bold:       true
-  text-color: *title-color
+
 
 freemode:
   bgcolor: [150,150,150]
 
 scoremode:
   gametime:         40
-  pause-color:      [0,0,0]
+  pause-color:      [20,20,20]
   pause-text-color: *title-color
-  pause-alpha:      200
+  pause-alpha:      255
   pause-text:       "Click to un-pause"
   base-score:       78
+  message-color:    *title-color
+  message-important-color: [255,255,255]
 
 levelbox:
   height:     110

@@ -21,7 +21,7 @@ from knights.settings import SCOREMODE
 from knights.settings import SIDEBAR
 
 from knights.gui_elements import Sidebar
-from knights.scores import submit_score
+from knights.scores import submit_score, get_highscores
 from knights.common import nice_print
 import pygame
 
@@ -30,6 +30,7 @@ class Scoremode(Freemode):
         super(Scoremode,self).__init__(level,screensize)
         self.name = "Scoremode"
         self.score = score
+        self.prev_score = score
         self.base_score = SCOREMODE['base-score']
         self.clock = pygame.time.Clock()
         self.timeleft = (SCOREMODE['gametime']+1-0.001)*1000
@@ -56,12 +57,43 @@ class Scoremode(Freemode):
         if self.board.game_over():
             timebonus = ((self.timeleft)*(self.level*self.level)*self.base_score)/20/1000
             next_round = ("scoremode",self.level+1,self.score+timebonus)
-            return ("clicktocontinue",next_round,"Click to continue")
+
+            close_call = {True: " ...Close call!", False: ""}[self.timeleft < 2000]
+
+            messages = [
+                (30,SCOREMODE['message-color'],"Level score: " + str(int(self.score-self.prev_score))),
+                (30,SCOREMODE['message-color'],"Time left: " + "{0:.1f}".format(self.timeleft/1000) + " seconds"+close_call),
+                (30,SCOREMODE['message-color'],"Timebonus: " + str(int(timebonus))),
+                (45,SCOREMODE['message-important-color'],"Total score: " + str(int(self.score+timebonus))),
+                (20,SCOREMODE['message-color'],"Click to continue to the next level...")]
+
+            return ("clicktocontinue",next_round,messages)
         elif self.timeleft < 100:
             nice_print(["Writing score to file..."])
+
+            hs = get_highscores(10)
+            if not hs:
+                max_hs = 0
+                min_hs = 0
+            else:
+                max_hs = max(hs)
+                min_hs = min(hs)
+
+            if self.score > max_hs:
+                highscore_message = (30,SCOREMODE['message-important-color'],"Congratulations! You broke the #1 highscore!")
+            elif self.score > min_hs or len(hs) < 10:
+                highscore_message = (30,SCOREMODE['message-color'],"Your score is in the top 10 highscores!")
+            else:
+                highscore_message = (30,SCOREMODE['message-color'],"You didn't get on the top 10 highscores.")
+
             submit_score(int(self.score))
             next_round = ("scoremode",1,0)
-            return ("clicktocontinue_scoremode_loss",next_round,"You lost! Click to play again")
+            messages = [(30,SCOREMODE['message-color'],"Game over!"),
+                        (40,SCOREMODE['message-important-color'],"Final score: " + str(int(self.score))),
+                        highscore_message,
+                        (20,SCOREMODE['message-color'],"Click to start new game...")
+                        ]
+            return ("clicktocontinue_scoremode_loss",next_round,messages)
         else:
             return False
 
@@ -72,6 +104,7 @@ class Scoremode(Freemode):
             return
 
         brx, bry = self.board_rect.size
+        bry += 5
 
         font = pygame.font.SysFont("dejavuserif",55,bold=True)
         if not text:

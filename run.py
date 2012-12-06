@@ -3,7 +3,7 @@ from __future__ import print_function
 from knights.game import Game
 
 
-version = "2.1"
+version = "2.2"
 
 print("Launching game..  v", version)
 
