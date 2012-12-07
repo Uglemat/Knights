@@ -160,6 +160,8 @@ class Game(object):
                                             self.screen.get_size(),
                                             done[2],
                                             wait=700)
+            elif newmode == "selecthighscore":
+                self.mode = SelectHighscore(self.screen.get_size())
             elif newmode == "mainmenu":
                 self.mode = Mainmenu(self.screen.get_size())
 

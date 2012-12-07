@@ -54,7 +54,7 @@ class Mainmenu(object):
         self.timesave_button = Button(
             name="timesavemode",
             size=button_size,
-            text="Timesave game",
+            text=MAINMENU["timesave-button-text"],
             location=(0,0))
 
         self.highscore_button = Button(

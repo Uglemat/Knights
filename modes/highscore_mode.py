@@ -85,6 +85,6 @@ class Highscore(object):
 
     def done(self):
         if self.hasclicked:
-            return ("mainmenu",'')
+            return ("selecthighscore",'')
         else:
             return False

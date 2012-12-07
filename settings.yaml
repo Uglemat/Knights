@@ -42,7 +42,8 @@ mainmenu:
   title-bgcolor:    [20,20,20,0]
   title-text-size:  25
   button-padding:   15
-  start-button-text:         "Start Game"
+  start-button-text:         "Start Normal Game"
+  timesave-button-text:      "Start Timesave Game"
   highscore-button-text:     "Highscores"
   help-button-text:          "Help"
   exit-button-text:          "Exit"
