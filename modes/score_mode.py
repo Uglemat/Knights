@@ -61,7 +61,7 @@ class Scoremode(Freemode):
                 (30,SCOREMODE['message-color'],"Time left: " + "{0:.1f}".format(self.timeleft/1000) + " seconds"+close_call),
                 (30,SCOREMODE['message-color'],"Timebonus: " + str(int(timebonus))),
                 (45,SCOREMODE['message-important-color'],"Total score: " + str(int(self.score+timebonus))),
-                (20,SCOREMODE['message-color'],"Click to continue to the next level...")]
+                (20,SCOREMODE['message-color'],"Click to continue to level {0}...".format(self.level+1))]
 
             return ("clicktocontinue",next_round,messages)
         elif self.timeleft < 100:
@@ -101,6 +101,7 @@ class Scoremode(Freemode):
 
         brx, bry = self.board_rect.size
         bry += 5
+        brx += 5
 
         font = pygame.font.SysFont("dejavuserif",55,bold=True)
         if not text:

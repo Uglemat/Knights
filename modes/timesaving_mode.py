@@ -42,7 +42,7 @@ class Timemode(Scoremode):
                 (25,TIMESAVEMODE['message-color'],"Timebonus: " + str(int(timebonus))),
                 (45,TIMESAVEMODE['message-important-color'],"Total time next round: " + "{0:.1f}".format(next_round_time)),
                 (45,TIMESAVEMODE['message-important-color'],"Total score: " + str(int(self.score+timebonus))),
-                (20,TIMESAVEMODE['message-color'],"Click to continue to the next level...")]
+                (20,TIMESAVEMODE['message-color'],"Click to continue to level {0}...".format(self.level+1))]
 
             return ("clicktocontinue",next_round,messages)
         elif self.timeleft < 100:

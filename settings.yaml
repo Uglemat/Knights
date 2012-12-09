@@ -110,7 +110,7 @@ timebox:
   height:     110
   location:   [0,110]
   text-color: [20,20,20]
-  bgcolor:    [150, 150, 150]
+  bgcolor:    [150,150,150]
   text-size:  33
 
 scorebox:
