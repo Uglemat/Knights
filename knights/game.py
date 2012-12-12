@@ -24,7 +24,7 @@ from modes.highscore_mode import Highscore
 from modes.timesaving_mode import Timemode
 
 from knights.settings import GAME
-from knights.settings import MAINMENU
+from knights.settings import MENU
 from knights.common import nice_print, open_help_in_browser
 import pygame
 
@@ -32,13 +32,23 @@ class Game(object):
     def __init__(self):
         pygame.init()
 
-        self.screen=pygame.display.set_mode(MAINMENU['resolution'])
+        self.fullscreen = GAME['fullscreen']
+        self.set_resolution("mainmenu")
 
         pygame.display.set_caption(GAME['caption'])
         self.clock = pygame.time.Clock()
         self.timeinterval = GAME['fps-limit']
 
         self.mode = Mainmenu(self.screen.get_size())
+
+    def set_resolution(self,display_name):
+        if display_name == "mainmenu":
+            self.screen = pygame.display.set_mode(MENU['resolution'])        
+        elif display_name == "gametime":
+            if self.fullscreen:
+                self.screen = pygame.display.set_mode(GAME['resolution'],pygame.FULLSCREEN)
+            else:
+                self.screen = pygame.display.set_mode(GAME['resolution'])
 
     def loop(self):
         while 1:
@@ -68,7 +78,7 @@ class Game(object):
                     self.mode.set_pause()
 
                 elif name == "main_menu":
-                    self.screen=pygame.display.set_mode(MAINMENU['resolution'])
+                    self.set_resolution("mainmenu")
                     self.mode = Mainmenu(self.screen.get_size())
 
         if self.mode.name == "Timemode":
@@ -85,17 +95,17 @@ class Game(object):
                     self.mode.set_pause()
 
                 elif name == "main_menu":
-                    self.screen=pygame.display.set_mode(MAINMENU['resolution'])
+                    self.set_resolution("mainmenu")
                     self.mode = Mainmenu(self.screen.get_size())
 
         elif self.mode.name == "Mainmenu":
             buttons = self.mode.button_clicked()
             for name in buttons:
                 if name == "scoremode":
-                    self.screen=pygame.display.set_mode(GAME['resolution'])
+                    self.set_resolution("gametime")
                     self.mode = Scoremode(1,self.screen.get_size())
                 elif name == "timesavemode":
-                    self.screen=pygame.display.set_mode(GAME['resolution'])
+                    self.set_resolution("gametime")
                     self.mode = Timemode(1,self.screen.get_size())
                 elif name == "highscore":
                     self.mode = SelectHighscore(self.screen.get_size())
@@ -108,6 +118,7 @@ class Game(object):
         elif self.mode.name == "SelectHighscore":
             buttons = self.mode.button_clicked()
             for name in buttons:
+                print(name)
                 if name == "back_highscore_button":
                     self.mode = Mainmenu(self.screen.get_size())
                 elif name == "timesave_highscore_button":

@@ -25,38 +25,39 @@
 yellow: &title-color
   [150,150,150]
 
-log-to-console: True
+log-to-console: false
 
 game:
+  fullscreen: false
   resolution: [980,640]
   caption:    "Knights"
   fps-limit:  60
 
-mainmenu:
+menu:
   resolution:       [500,530]
   bgcolor:          [20,20,20]
-  title:            "Main Menu"
+
   title-size:       [600,100]
   title-center-y:   50
   title-color:      *title-color
   title-bgcolor:    [20,20,20,0]
   title-text-size:  25
   button-padding:   15
-  start-button-text:         "Start Normal Game"
-  timesave-button-text:      "Start Timesave Game"
-  highscore-button-text:     "Highscores"
-  help-button-text:          "Help"
-  exit-button-text:          "Exit"
+
+mainmenu:
+  title:                 "Main Menu"
+  start-button-text:     "Start Normal Game"
+  timesave-button-text:  "Start Timesave Game"
+  highscore-button-text: "Highscores"
+  help-button-text:      "Help"
+  exit-button-text:      "Exit"
+  
 
 selecthighscore:
-  bgcolor:          [20,20,20]
-  title:            "Select game type"
-  title-size:       [600,100]
-  title-color:      *title-color
-  title-bgcolor:    [20,20,20,0]
-  title-text-size:  25
-  title-center-y:   50
-  button-padding:   15
+  title:                "Select game type"
+  normal-button-text:   "Normal Highscores"
+  timesave-button-text: "Timesave Highscores"
+  back-button-text:     "Back"
 
 gameboard-logic:
   starting-position: [1,1]
