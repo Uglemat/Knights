@@ -118,7 +118,6 @@ class Game(object):
         elif self.mode.name == "SelectHighscore":
             buttons = self.mode.button_clicked()
             for name in buttons:
-                print(name)
                 if name == "back_highscore_button":
                     self.mode = Mainmenu(self.screen.get_size())
                 elif name == "timesave_highscore_button":
@@ -142,7 +141,8 @@ class Game(object):
 
     def events(self):
         for i in pygame.event.get():
-            if i.type==pygame.QUIT or i.type==pygame.KEYDOWN and i.key==pygame.K_ESCAPE:
+            if i.type==pygame.QUIT or (i.type==pygame.KEYDOWN and i.key==pygame.K_ESCAPE or
+                                       i.type==pygame.KEYDOWN and i.key==pygame.K_q):
                 exit()
             if i.type==pygame.MOUSEBUTTONDOWN:
                 self.mode.mousedown(i.pos)
