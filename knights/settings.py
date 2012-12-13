@@ -24,7 +24,7 @@ else: # Python 3, or python 4 if you're from the distant future
     from yaml.lib3 import yaml
     from yaml.lib3.yaml.parser import ParserError
 
-VERSION = "2.6"
+VERSION = "2.7"
 settings_file = open("settings.yaml","r").read()
 settings = yaml.load(settings_file)
 
