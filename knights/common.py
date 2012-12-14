@@ -34,6 +34,7 @@ settings_regex = re.compile("{subsetting}|{setting}".format(subsetting=subsettin
                                                             setting=not_subsetting))
 
 def args_overwrite_settings(settings):
+    setting_changed = False
     for arg in sys.argv[1:]:
         match = re.match(settings_regex,arg)
         if match:
@@ -51,6 +52,7 @@ def args_overwrite_settings(settings):
                 print("Temporarily changing setting {0}.{1}\t-->\t{2}".format(groups[0],groups[1],groups[2]))
                 try:
                     settings[groups[0]][groups[1]] = yaml.load(groups[2])
+                    setting_changed = True
                 except ParserError:
                     print(failed_setting(groups[2]))
             elif groups[3]:     # setting matched
@@ -63,14 +65,15 @@ def args_overwrite_settings(settings):
                 print("Temporarily changing setting {0}\t-->\t{1}".format(groups[3],groups[4]))
                 try:
                     settings[groups[3]] = yaml.load(groups[4])
+                    setting_changed = True
                 except ParserError:
                     print(failed_setting(groups[4]))
-    return settings
+    return settings, setting_changed
 
 
 settings_file = open("settings.yaml","r").read()
 settings = yaml.load(settings_file)
-settings = args_overwrite_settings(settings)
+settings, setting_changed = args_overwrite_settings(settings)
 
 def nice_print(args):
     if not settings['log-to-console']:

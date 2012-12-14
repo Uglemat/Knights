@@ -18,7 +18,7 @@ import sys
 import re
 
 from knights.meta import VERSION
-from knights.common import settings, settings_regex
+from knights.common import settings, settings_regex, setting_changed
 
 if sys.version_info[0] < 3: # Not python 3
     from yaml.lib import yaml
@@ -47,4 +47,5 @@ def do_stuff_with_args():
             else:
                 print("Argument makes non sense: {0}".format(arg))
     if exit_after:
-        exit()
+        if not setting_changed:
+            exit()
