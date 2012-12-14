@@ -58,7 +58,7 @@ class Game(object):
             self.events()
 
             self.blit()
-            self.update()
+            self.mode.update()
 
             pygame.display.flip()
             self.clock.tick(self.timeinterval)
@@ -135,9 +135,6 @@ class Game(object):
                         "Blitting on screen\n"])
             self.screen.blit(self.mode.background,(0,0))
 
-
-    def update(self):
-        self.mode.update()
 
     def events(self):
         for i in pygame.event.get():

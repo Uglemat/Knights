@@ -17,6 +17,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 import sys
 import re
 
+from knights.meta import VERSION
+from knights.common import settings, settings_regex
+
 if sys.version_info[0] < 3: # Not python 3
     from yaml.lib import yaml
     from yaml.lib.yaml.parser import ParserError
@@ -25,47 +28,23 @@ else: # Python 3, or python 4 if you're from the distant future
     from yaml.lib3.yaml.parser import ParserError
 
 
-subsetting = '([\w\-]+)\.([\w\-]+)="?(.+)"?'  # Example match: menu.bgcolor="[240,40,100]"
-setting    = '([\w\-]+)="?(.+)"?'             # Example match: log-to-console=true
-settings_regex     = re.compile("{subsetting}|{setting}".format(subsetting=subsetting, setting=setting))
+"""
+ Any command line argument that matches settings_regex, will _not_ be handled with this file,
+ they are handled in the function args_overwrite_settings in knights/common.py
+
+ The function is not in this file as to avoid circular dependencies.
+"""
 
 
-def args_overwrite_settings(settings):
-    for arg in sys.argv[1:]:
-        match = re.match(settings_regex,arg)
-        if match:
-            groups = match.group(1,2,3, 4,5)
-
-            failed_setting = lambda _setting: "\tFAILED! Parsing error: '{0}'".format(_setting)
-            non_existent_setting = lambda _setting: "WARNING! No such setting: {0}".format(_setting)
-
-            if groups[0]:      # subsetting matched
-                try:
-                    settings[groups[0]][groups[1]]
-                except KeyError:
-                    print(non_existent_setting("{0}.{1}".format(groups[0],group[1])))
-
-                print("Temporarily changing setting {0}.{1}\t-->\t{2}".format(groups[0],groups[1],groups[2]))
-                try:
-                    settings[groups[0]][groups[1]] = yaml.load(groups[2])
-                except ParserError:
-                    print(failed_setting(groups[2]))
-            elif groups[3]:     # setting matched
-                try:
-                    settings[groups[3]]
-                except KeyError:
-                    print(non_existent_setting(groups[3]))
-
-
-                print("Temporarily changing setting {0}\t-->\t{1}".format(groups[3],groups[4]))
-                try:
-                    settings[groups[3]] = yaml.load(groups[4])
-                except ParserError:
-                    print(failed_setting(groups[4]))
-    return settings
-
-def in_lack_of_a_better_function_name___do_stuff_with_args():
+def do_stuff_with_args():
+    exit_after = False
     for arg in sys.argv[1:]:
         match = re.match(settings_regex,arg)
         if not match:
-            print("Argument makes non sense: {0}".format(arg))
+            if arg in ["--version","-v"]:
+                print("Knights version: {0}".format(VERSION))
+                exit_after = True
+            else:
+                print("Argument makes non sense: {0}".format(arg))
+    if exit_after:
+        exit()

@@ -15,20 +15,7 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 import sys
-from knights.args import args_overwrite_settings
-
-if sys.version_info[0] < 3: # Not python 3
-    from yaml.lib import yaml
-    from yaml.lib.yaml.parser import ParserError
-else: # Python 3, or python 4 if you're from the distant future
-    from yaml.lib3 import yaml
-    from yaml.lib3.yaml.parser import ParserError
-
-VERSION = "2.7.1"
-settings_file = open("settings.yaml","r").read()
-settings = yaml.load(settings_file)
-
-settings = args_overwrite_settings(settings)
+from knights.common import settings
 
 GAME            = settings['game']
 FREEMODE        = settings['freemode']

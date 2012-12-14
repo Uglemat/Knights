@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """
 Copyright (C) 2012 Mattias Ugelvik
 
@@ -16,14 +15,4 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
-from __future__ import print_function
-from knights.game import Game
-from knights.meta import VERSION
-from knights.args import do_stuff_with_args
-
-do_stuff_with_args()
-
-print("\nLaunching game..  v{0!s}".format(VERSION))
-
-game = Game()
-game.loop()
+VERSION = "2.7.1"
