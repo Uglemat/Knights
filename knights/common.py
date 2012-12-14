@@ -47,7 +47,7 @@ def args_overwrite_settings(settings):
                 try:
                     settings[groups[0]][groups[1]]
                 except KeyError:
-                    print(non_existent_setting("{0}.{1}".format(groups[0],group[1])))
+                    print(non_existent_setting("{0}.{1}".format(groups[0],groups[1])))
 
                 print("Temporarily changing setting {0}.{1}\t-->\t{2}".format(groups[0],groups[1],groups[2]))
                 try:
