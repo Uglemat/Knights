@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>Help for development</title>
+</head>
+<body>
+  <h1>Development help:</h1>
+
+  <section id="rules">
+    <p>
+      Here I'll write a few things about how the game was developed in case anyone wants to modify it.
+    </p>
+
+    <h2>General</h2>
+    <p>
+      The game is supposed to work in both python2.7 and python 3. It's GNU GPLv3 licensed.
+    </p>
+
+    <h2>Game structure</h2>
+    <p>
+      The main loop is contained in the Game class, inside knights/game.py.
+      
+      The variable self.mode inside Game, will be an instance of the "current mode". For a class to be a mode, it has to have certain features so that Game can ducktype on it.
+      
+      Here's a list as of writing this file:
+    </p>
+    <ul>
+      <li>Game.mode.name</li>
+      <p class="dochelp">The name of the mode, is used in Game.handle_button_clicks</p>
+      <li>Game.mode.update</li>
+      <p class="dochelp">Is called once per loop, used to do whatever</p>
+      <li>Game.mode.background</li>
+      <p class="dochelp">This is the surface of the mode</p>
+      <li>Game.mode.changed</li>
+      <p class="dochelp">A boolean. Game.blit will only blit Game.mode.background on to Game.screen if Game.mode.changed is True. This is to improve performance.</p>
+      <li>Game.mode.mouseup AND Game.mode.mousedown</li>
+      <p class="dochelp">These methods are called in Game.events, along with the location of the mouse button. A mode has to have them, the mode can do whatever with them.</p>
+    </ul>
+
+    <h2>Settings</h2>
+    <p>All the settings come from the file settings.yaml. They are loaded by yaml in the file knights/common.py.
+Btw, PyYAML is included with the game for portability. It's located in the yaml directory and you shouldn't have to worry about it.<br /> Anyway, the settings variable in common.py is imported to knights/settings.py. Here the settings are split up into more variables. Each of the relevant parts of the game, will import any settings from this file. These are the *only uppercase variables* used in the project, so it should be clear that they are settings when you know this.</p>
+
+    <h2>Game logic</h2>
+
+    <p>The game logic of the gameboard resides in knights/gameboard_logic.py. <br />The function generate_board is important, it generates a list of tuples of coordinates within some gameboard size, until the amount of tuples reaches some threshold. This function is called in Gameboard.populate_board, and the tuples inside the list will become the coordinates of *open* fields, that is, those fields that the knight must visit to win the game.<br /><br /> Gameboard.board will be a list of instances of the Field class, each field, or coordinate, has one instance. Gameboard.print_board is just a function to print the board in a nice way.<br /> Gameboard.game_over will return if the game is over. Gameboard.move_knight will try to move the knight to another coordinate, it will return false if it is an invalid move. This is an important function.
+      <br />
+    It will probably be useful to see how Gameboard is used inside knights/cli.py, which is a command line version of the game. You can run the game with the file run_cli.py. It's not a fun way to play but it's very useful. It's only python 2 compatible at this moment.</p>
+
+    <h2>Pygame board representation</h2>
+    <p>The file knights/gameboard.py is all about how the gameboard is represented in pygame.<br /> The class Board inherits from the class Gameboard from gameboard_logic.py.<br /> The names are a little confusing, sorry about that.
+
+      Board.pygame_field is a list of instances of PygameField
+    </p>
+
+
+    <h2>Ehm</h2>
+    <p>There are other stuff I could write about, like how the menu-type modes inherit from Menu in knights/menu.py, but I don't have time. Good luck!</p>
+  </section>
+
+<a href="help.html">Back to game rules</a>
+</body>
+</html>

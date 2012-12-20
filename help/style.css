@@ -1,0 +1,26 @@
+body {
+    line-height: 140%;
+}
+h1, h2 {
+    color: darkred;
+}
+#rules {
+    width: 700px;
+    margin: 30px;
+}
+.beige {
+    background-color: #EAB26E;
+    padding: 2px;
+}
+.green {
+    background-color: #64C961;
+    padding: 2px;
+}
+.blue {
+    background-color: #3A67BA;
+    padding: 2px;
+}
+.dochelp {
+    color: #444;
+    margin-left: 10px;
+}

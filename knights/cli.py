@@ -1,3 +1,4 @@
+# -*- Encoding: utf-8 -*-
 """
 Copyright (C) 2012 Mattias Ugelvik
 
@@ -25,28 +26,31 @@ def game():
     if size == '': exit()
     gameboard = Gameboard(int(size))
 
-    play_d = {"\x1b[B\x1b[D":(-1,2),
-              "\x1b[B\x1b[C":(1,2),
-              "\x1b[A\x1b[D":(-1,-2),
-              "\x1b[A\x1b[C":(1,-2),
-              "\x1b[C\x1b[A":(2,-1),
-              "\x1b[C\x1b[B":(2,1),
-              "\x1b[D\x1b[A":(-2,-1),
-              "\x1b[D\x1b[B":(-2,1),
+    play_d = {"dl":(-1,2),
+              "dr":(1,2),
+              "ul":(-1,-2),
+              "ur":(1,-2),
+              "ru":(2,-1),
+              "rd":(2,1),
+              "lu":(-2,-1),
+              "ld":(-2,1),
               "ng":"ng"}
-    # Those are just escape sequences for the arrow keys in the terminal or
-    # something stupid like that, I don't even care I just copy-pasted. I mean
-    # why should I care, we're all gonna die and then it doesn't matter.
-    # Aliens won't care a byte. Not even a bit.
-    #  Prefix = \x1b[
-    #  A = Up
-    #  B = Down
-    #  C = Right
-    #  D = Left
 
+    """
+    d = Down
+    l = Left
+    r = Right
+    u = Up
+
+    dl = Down-Left  | ↓↓←
+    rd = Right-Down | →→↓
+    ul = Up-Left    | ↑↑←
+
+    This is how you tell the game where you want to move. The first char is worth 2 moves, the second 1, together they can form knight movements.
+    """
 
     while 1:
-        print "\n" * 50
+        print "\n" * 5
         gameboard.print_board()
 
         if gameboard.game_over():
@@ -56,6 +60,7 @@ def game():
         try:
             new_move = play_d[raw_input()]
         except KeyError:
+            print "errar"
             new_move = (-1000,-1000)
         if new_move == "ng":
             game()
